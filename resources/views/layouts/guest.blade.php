@@ -11,14 +11,25 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        {{-- Sin Vite: Tailwind + Alpine por CDN (login, registro, etc.) --}}
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            sans: ['Figtree', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                        },
+                    },
+                },
+            };
+        </script>
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
 
-        <!-- Styles -->
         @livewireStyles
     </head>
-    <body>
-        <div class="font-sans text-gray-900 antialiased">
+    <body class="m-0 min-h-screen p-0 antialiased">
+        <div class="min-h-screen font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>
 
